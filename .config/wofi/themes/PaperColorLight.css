@@ -1,0 +1,38 @@
+window {
+    background-color: #0000;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #bcbcbc;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12pt;
+    color: #4d4d4c;
+}
+
+listview {
+    padding: 5px;
+    spacing: 5px;
+}
+
+listview row {
+    height: 30px;
+    padding-left: 10px;
+    color: #4d4d4c;
+}
+
+listview row:selected {
+    background-color: #0087af;
+    color: #ffffff;
+}
+
+listview row icon {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+inputbar {
+    border-top: 1px solid #bcbcbc;
+    padding-top: 5px;
+    color: #4d4d4c;
+}
+

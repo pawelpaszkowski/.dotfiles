@@ -1,0 +1,36 @@
+# Wofi PaperColor Light Configuration for Hyprland
+
+# Window settings
+width=400
+height=300
+location=center
+show=drun
+prompt=Applications
+filter_rate=100
+
+# Appearance
+allow_markup=true
+allow_images=true
+image_size=24
+gtk_dark=false
+insensitive=true
+
+# Layout
+halign=fill
+orientation=vertical
+content_halign=fill
+no_actions=true
+
+# Performance
+cache_file=/tmp/wofi-cache
+term=kitty
+
+# Matching
+matching=contains
+sort_order=alphabetical
+
+# Key bindings
+key_expand=Tab
+key_exit=Escape
+key_up=Up
+key_down=Down
