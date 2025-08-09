@@ -110,6 +110,8 @@ vim.o.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
 
+vim.opt.clipboard = 'unnamedplus'
+
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -117,7 +119,6 @@ vim.o.showmode = false
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
-
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -254,6 +255,17 @@ require('lazy').setup({
       'mfussenegger/nvim-dap',
     },
     ft = 'java',
+  },
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { 'echasnovski/mini.icons', opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
   },
 
   -- NOTE: Plugins can also be added by using a table,
@@ -1026,3 +1038,7 @@ require('lazy').setup({
 --
 vim.opt.background = 'light'
 vim.cmd.colorscheme 'PaperColor'
+
+vim.keymap.set('n', '-', '<cmd>Oil<CR>')
+vim.keymap.set('x', '>', '>gv')
+vim.keymap.set('x', '<', '<gv')
