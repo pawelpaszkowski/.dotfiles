@@ -117,3 +117,5 @@ export MANPAGER="nvimpager"
 export NVM_DIR="$HOME/.nvm"
 source /usr/share/nvm/init-nvm.sh
 
+export KUBE_EDITOR="nvim"
+
