@@ -1,156 +1,137 @@
 * {
-  font-family: JetbrainsMono Nerd Font;
-  font-size: 10px;
+  border: none;
+  border-radius: 0;
+  font-family: "Roboto", "Font Awesome 6 Free";
+  font-size: 13px;
   min-height: 0;
-  padding-right: 2px;
-  padding-left: 2px;
-  padding-bottom: 0px;
 }
 
-#waybar {
+window#waybar {
+  background-color: transparent;
+  color: #000000;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+/* Wszystkie moduły */
+#workspaces,
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#custom-power {
   background: transparent;
-  color: #c6d0f5;
-  margin: 2px 2px;
+  color: #000000;
+  padding: 0 5px;
+  margin: 0 2px;
 }
 
+/* Obszary robocze */
 #workspaces {
-  border-radius: 5px;
-  margin: 5px;
-  background: #101010;
-  margin-left: 2px;
+  background: transparent;
 }
 
 #workspaces button {
-  color: #babbf1;
-  border-radius: 5px;
-  padding: 0.4rem;
-}
-
-#workspaces button.active {
-  color: #99d1db;
-  border-radius: 5px;
-}
-
-button {
   background: transparent;
+  color: #000000;
+  border-radius: 0;
+  padding: 0 8px;
 }
 
 #workspaces button:hover {
-  background: #1e1e1e;
-  border: 0px solid transparent;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 -2px #000000;
 }
 
-#custom-music,
-#tray,
-#backlight,
-#clock,
-#battery,
-#pulseaudio,
-#network,
-#cpu,
-#memory,
-#custom-lock,
-#custom-power,
-#custom-weather,
-#custom-uptime,
-#custom-docker {
-  background-color: #101010;
-  padding: 0.5rem 1rem;
-  margin: 5px 0;
+#workspaces button.active {
+  background: rgba(0, 0, 0, 0.15);
+  color: #000000;
+  font-weight: bold;
 }
 
+/* Zegar */
 #clock {
-  color: #8caaee;
-  border-radius: 5px;
+  font-weight: bold;
 }
 
-#custom-weather {
-  color: #8caaee;
-  margin-left: 0.5rem;
-  border-radius: 5px;
-}
-
+/* Bateria */
 #battery {
-  color: #a6d189;
+  color: #000000;
 }
 
-#battery.charging {
-  color: #a6d189;
+#battery.charging, #battery.plugged {
+  color: #000000;
 }
 
-#battery.warning:not(.charging) {
-  color: #e78284;
+@keyframes blink {
+  to {
+    background-color: rgba(255, 0, 0, 0.3);
+    color: #ffffff;
+  }
 }
 
-#backlight {
-  color: #e5c890;
+#battery.critical:not(.charging) {
+  color: #ff0000;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
-#backlight,
-#battery {
-  border-radius: 0;
+/* CPU */
+#cpu {
+  color: #000000;
 }
 
+/* Pamięć */
+#memory {
+  color: #000000;
+}
+
+/* Sieć */
+#network {
+  color: #000000;
+}
+
+#network.disconnected {
+  color: #ff0000;
+}
+
+/* Dźwięk */
 #pulseaudio {
-  color: #ea999c;
-  border-radius: 5px 0px 0px 5px;
+  color: #000000;
 }
 
-#custom-docker {
-  color: #85c1dc;
+#pulseaudio.muted {
+  color: #ff0000;
 }
 
-#custom-music {
-  color: #ca9ee6;
-  border-radius: 5px;
+/* Podświetlenie */
+#backlight {
+  color: #000000;
 }
 
-#custom-lock {
-  color: #babbf1;
-}
-
+/* Przycisk wyłączania */
 #custom-power {
-  margin-right: 1rem;
-  border-radius: 0px 5px 5px 0px;
-  color: #e78284;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-#custom-docker.docker {
-  color: #85c1dc;
-}
-
-#custom-docker.docker-none {
-  color: #737994;
-}
-
-#custom-docker.docker-error {
-  color: #e78284;
-}
-
-#custom-weather.clear {
-  color: #e5c890; /* Sunny yellow */
-}
-
-#custom-weather.cloud {
-  color: #99d1db; /* Light blue */
-}
-
-#custom-weather.rain {
-  color: #8caaee; /* Blue */
-}
-
-#custom-weather.snow {
-  color: #c6d0f5; /* White-ish */
-}
-
-#custom-weather.thunder {
-  color: #ca9ee6; /* Purple */
-}
-
-#custom-weather.fog {
-  color: #b0b4bc; /* Gray */
-}
-
-#custom-weather.error {
-  color: #e78284; /* Red */
+#custom-power:hover {
+  background: rgba(255, 0, 0, 0.1);
 }
