@@ -1036,6 +1036,15 @@ require('lazy').setup({
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 --
+--
+vim.g.PaperColor_Theme_Options = {
+  theme = {
+    ['default.light'] = {
+      transparent_background = 1,
+    },
+  },
+}
+
 vim.opt.background = 'light'
 vim.cmd.colorscheme 'PaperColor'
 

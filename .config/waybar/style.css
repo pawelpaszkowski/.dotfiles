@@ -1,4 +1,5 @@
-* {
+window#waybar,
+#waybar * {
   border: none;
   border-radius: 0;
   font-family: "Roboto", "Font Awesome 6 Free";

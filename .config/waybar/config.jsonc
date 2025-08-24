@@ -13,6 +13,7 @@
     "cpu",
     "memory",
     "clock",
+    "tray",
     "custom/power"
   ],
 
@@ -30,6 +31,11 @@
       "focused": "",
       "default": ""
     }
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
   },
 
   "clock": {
