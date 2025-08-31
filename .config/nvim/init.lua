@@ -267,6 +267,42 @@ require('lazy').setup({
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     lazy = false,
   },
+  -- Markdown preview w przeglądarce
+  {
+    'iamcco/markdown-preview.nvim',
+    build = 'cd app && npm install',
+    ft = { 'markdown' },
+    config = function()
+      vim.g.mkdp_auto_start = 0
+    end,
+  },
+
+  -- TODO listy i bullet points
+  {
+    'dkarter/bullets.vim',
+    ft = { 'markdown', 'text' },
+  },
+
+  -- Obsidian-style notatki
+  {
+    'epwalsh/obsidian.nvim',
+    version = '*',
+    lazy = true,
+    ft = 'markdown',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+      workspaces = {
+        {
+          name = 'notes',
+          path = '~/notes', -- tu trzymasz swoje notatki
+        },
+      },
+      daily_notes = {
+        folder = 'daily',
+        date_format = '%Y-%m-%d',
+      },
+    },
+  },
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -1051,3 +1087,10 @@ vim.cmd.colorscheme 'PaperColor'
 vim.keymap.set('n', '-', '<cmd>Oil<CR>')
 vim.keymap.set('x', '>', '>gv')
 vim.keymap.set('x', '<', '<gv')
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'markdown',
+  callback = function()
+    vim.opt_local.conceallevel = 2
+  end,
+})
