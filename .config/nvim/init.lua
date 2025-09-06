@@ -1094,3 +1094,7 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.conceallevel = 2
   end,
 })
+
+vim.opt.tabstop = 4 -- szerokość tabulatora
+vim.opt.shiftwidth = 4 -- ile spacji wcięcia przy >> i << albo autoindent
+vim.opt.expandtab = true -- używaj spacji zamiast tabów

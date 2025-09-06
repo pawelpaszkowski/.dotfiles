@@ -7,6 +7,8 @@ local workspace_dir = vim.fn.stdpath 'data' .. '/site/java/workspace-root/' .. w
 -- Ścieżka do jdtls (Mason installation)
 local jdtls_path = vim.fn.stdpath 'data' .. '/mason/packages/jdtls'
 
+local launcher = vim.fn.glob(jdtls_path .. '/plugins/org.eclipse.equinox.launcher_*.jar')
+
 local config = {
   cmd = {
     'java',
@@ -22,7 +24,8 @@ local config = {
     '--add-opens',
     'java.base/java.lang=ALL-UNNAMED',
     '-jar',
-    jdtls_path .. '/plugins/org.eclipse.equinox.launcher_*.jar',
+    launcher,
+    -- jdtls_path .. '/plugins/org.eclipse.equinox.launcher_*.jar',
     '-configuration',
     jdtls_path .. '/config_linux',
     '-data',
