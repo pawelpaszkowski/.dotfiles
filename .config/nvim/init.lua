@@ -1119,6 +1119,7 @@ vim.g.PaperColor_Theme_Options = {
       transparent_background = 1,
     },
   },
+  transparent_background = 1,
 }
 
 vim.opt.background = 'light'
@@ -1177,3 +1178,26 @@ end
 --   particle_gravity = -50,
 --   min_distance_emit_particles = 0,
 -- }
+--
+
+vim.api.nvim_create_autocmd('ColorScheme', {
+  pattern = '*',
+  callback = function()
+    vim.cmd [[
+      highlight Normal guibg=NONE ctermbg=NONE
+      highlight NormalFloat guibg=NONE ctermbg=NONE
+      highlight SignColumn guibg=NONE ctermbg=NONE
+    ]]
+  end,
+})
+vim.cmd [[
+  highlight Normal guibg=NONE ctermbg=NONE
+  highlight NormalNC guibg=NONE ctermbg=NONE
+  highlight SignColumn guibg=NONE ctermbg=NONE
+  highlight LineNr guibg=NONE ctermbg=NONE
+  highlight Folded guibg=NONE ctermbg=NONE
+  highlight NonText guibg=NONE ctermbg=NONE
+  highlight SpecialKey guibg=NONE ctermbg=NONE
+  highlight VertSplit guibg=NONE ctermbg=NONE
+  highlight EndOfBuffer guibg=NONE ctermbg=NONE
+]]

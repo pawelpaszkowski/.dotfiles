@@ -123,3 +123,8 @@ export KUBE_EDITOR="nvim"
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+if [ -z "$TMUX" ]; then
+  # sprawdź, czy istnieje sesja "default"
+  tmux attach -t default || tmux new -s default
+fi
