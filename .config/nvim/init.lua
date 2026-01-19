@@ -248,6 +248,7 @@ rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
+  'ThePrimeagen/vim-be-good',
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
   {
     'mfussenegger/nvim-jdtls',
@@ -303,6 +304,40 @@ require('lazy').setup({
       },
     },
   },
+  -- added new reactive framework should help with trial
+  -- {
+  --   'rasulomaroff/reactive.nvim',
+  --   config = function()
+  --     require('reactive').setup {
+  --       load = { 'catppuccin-mocha-cursor', 'catppuccin-mocha-cursorline' },
+  --     }
+  --   end,
+  -- },
+
+  -- smear cursor config --- probably to remove
+  -- {
+  --   'sphamba/smear-cursor.nvim',
+  --
+  --   opts = {
+  --     -- Smear cursor when switching buffers or windows.
+  --     smear_between_buffers = true,
+  --
+  --     -- Smear cursor when moving within line or to neighbor lines.
+  --     -- Use `min_horizontal_distance_smear` and `min_vertical_distance_smear` for finer control
+  --     smear_between_neighbor_lines = true,
+  --
+  --     -- Draw the smear in buffer space instead of screen space when scrolling
+  --     scroll_buffer_space = true,
+  --
+  --     -- Set to `true` if your font supports legacy computing symbols (block unicode symbols).
+  --     -- Smears and particles will look a lot less blocky.
+  --     legacy_computing_symbols_support = false,
+  --
+  --     -- Smear cursor in insert mode.
+  --     -- See also `vertical_bar_cursor_insert_mode` and `distance_stop_animating_vertical_bar`.
+  --     smear_insert_mode = true,
+  --   },
+  -- },
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -736,9 +771,11 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
-        --
-
+        ts_ls = {},
+        angularls = {
+          filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx' },
+          root_dir = require('lspconfig.util').root_pattern('angular.json', 'project.json', 'nx.json'),
+        },
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -824,6 +861,9 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'prettierd', 'prettier', stop_after_first = true },
+        html = { 'prettierd', 'prettier', stop_after_first = true },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -1098,3 +1138,42 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.opt.tabstop = 4 -- szerokość tabulatora
 vim.opt.shiftwidth = 4 -- ile spacji wcięcia przy >> i << albo autoindent
 vim.opt.expandtab = true -- używaj spacji zamiast tabów
+
+-- Ustawienia efektu kursora w Neovide
+if vim.g.neovide then
+  vim.g.neovide_cursor_vfx_mode = 'railgun' -- ⚡ efekt piorunów
+
+  -- Dodatkowe parametry do dopracowania efektu
+  vim.g.neovide_cursor_vfx_particle_lifetime = 1.2
+  vim.g.neovide_cursor_vfx_particle_density = 20.0
+  vim.g.neovide_cursor_vfx_particle_speed = 10.0
+  vim.g.neovide_cursor_vfx_opacity = 200.0
+  vim.g.neovide_cursor_vfx_trail_length = 0.8
+  vim.g.neovide_cursor_animation_length = 0.05
+  vim.g.neovide_cursor_trail_size = 0.7
+end
+
+-- firehazard
+-- require('smear_cursor').setup {
+--   cursor_color = '#000000',
+--   particles_enabled = true,
+--   stiffness = 0.3,
+--   trailing_stiffness = 0.1,
+--   trailing_exponent = 5,
+--   damping = 0.5,
+--   gradient_exponent = 0,
+--   gamma = 1,
+--   never_draw_over_target = true,
+--   hide_target_hack = true,
+--
+--   -- Particle tuning (opcjonalne)
+--   particle_spread = 1,
+--   particles_per_second = 500,
+--   particles_per_length = 50,
+--   particle_max_lifetime = 800,
+--   particle_max_initial_velocity = 20,
+--   particle_velocity_from_cursor = 0.5,
+--   particle_damping = 0.15,
+--   particle_gravity = -50,
+--   min_distance_emit_particles = 0,
+-- }

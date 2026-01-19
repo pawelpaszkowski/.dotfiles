@@ -119,3 +119,7 @@ source /usr/share/nvm/init-nvm.sh
 
 export KUBE_EDITOR="nvim"
 
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

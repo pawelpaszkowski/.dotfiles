@@ -42,5 +42,12 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
-background-opacity = 0.7
+background-opacity = 0.85
 theme=PaperColorLight.conf
+
+cursor-style = block
+cursor-style-blink = true
+
+# custom-shader-animation = always
+# custom-shader = ~/.config/ghostty/shaders/lightning.glsl
+
